@@ -15,7 +15,7 @@ def move_zeros_to_front(lst):
         print("Ошибка! Введите список.")
         return None
 
-    # Перемещаем нулевые элементы в начало списка
+
     zero_elements = [num for num in lst if num == 0]
     non_zero_elements = [num for num in lst if num != 0]
     new_list = zero_elements + non_zero_elements
