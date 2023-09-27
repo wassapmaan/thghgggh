@@ -1,6 +1,6 @@
-number = input("Введите натуральное число: ")
+number = input("Введи натуральное число: ")
 if not number.isdigit():
-    print("Ошибка! Введите натуральное число.")
+    print("Ошибка! Введи натуральное число.")
     exit()
 max_digit = 0
 for digit in number:

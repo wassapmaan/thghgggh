@@ -1,6 +1,6 @@
 def find_smallest_even_element(lst):
     if not isinstance(lst, list):
-        print("Ошибка! Введите список.")
+        print("Ошибка! Введи список.")
         return None
 
     even_elements = [num for num in lst if num % 2 == 0]
@@ -12,7 +12,7 @@ def find_smallest_even_element(lst):
 
 def move_zeros_to_front(lst):
     if not isinstance(lst, list):
-        print("Ошибка! Введите список.")
+        print("Ошибка! Введи список.")
         return None
 
 
@@ -22,7 +22,7 @@ def move_zeros_to_front(lst):
 
     return new_list
 
-input_list = input("Введите список элементов через пробел: ")
+input_list = input("Введи список элементов через пробел: ")
 lst = [int(num) for num in input_list.split()]  # Преобразование строк в целые числа
 
 smallest_even = find_smallest_even_element(lst)

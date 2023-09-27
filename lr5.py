@@ -2,13 +2,12 @@ toys = {
     "Мяч": ["Красный мяч", 10.99, 5],
     "Кукла": ["Розовая кукла", 15.99, 3],
     "Конструктор": ["Деревянный конструктор", 19.99, 7],
-    "Пазл": ["1000 элементов", 12.99, 10],
-    "Машинка": ["Скоростная машинка", 9.99, 8],
-    "Плюшевый мишка": ["Мягкий и пушистый", 14.99, 4]
+    "Пазл": ["10000000 элементов", 12.99, 10],
+    "Машинка": ["Быстрая машинка", 9.99, 8],
+    "Плюшевый мишка": ["Злой и пушистый", 14.99, 4]
 }
-
 def display_description():
-    toy_name = input("Введите название игрушки: ")
+    toy_name = input("Введи название игрушки: ")
     if toy_name in toys:
         description = toys[toy_name][0]
         print(f"Описание: {description}")
@@ -16,7 +15,7 @@ def display_description():
         print("Такой игрушки нет в магазине.")
 
 def display_price():
-    toy_name = input("Введите название игрушки: ")
+    toy_name = input("Введи название игрушки: ")
     if toy_name in toys:
         price = toys[toy_name][1]
         print(f"Цена: {price} руб.")
@@ -24,7 +23,7 @@ def display_price():
         print("Такой игрушки нет в магазине.")
 
 def display_quantity():
-    toy_name = input("Введите название игрушки: ")
+    toy_name = input("Введи название игрушки: ")
     if toy_name in toys:
         quantity = toys[toy_name][2]
         print(f"Количество: {quantity} шт.")
@@ -46,13 +45,13 @@ def display_all():
 def purchase():
     total_price = 0
     while True:
-        toy_name = input("Введите название игрушки (или 'FF' для выхода): ")
+        toy_name = input("Введи название игрушки (или 'FF' для выхода): ")
         if toy_name == 'FF':
             break
         elif toy_name not in toys:
             print("Такой игрушки нет в магазине.")
             continue
-        quantity = int(input("Введите количество: "))
+        quantity = int(input("Введи количество: "))
         if quantity > toys[toy_name][2]:
             print("Недостаточное количество товара.")
             continue
@@ -87,10 +86,10 @@ def main():
         elif choice == '5':
             purchase()
         elif choice == '6':
-            print("До свидания!")
+            print("!!!!!!ВсЕгО ХоРоШеГо!!!!!!!")
             break
         else:
-            print("Некорректный ввод. Попробуйте снова.")
+            print("Фигня. Давай снова.")
 
 if __name__ == "__main__":
     main()
