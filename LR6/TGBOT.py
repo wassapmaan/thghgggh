@@ -27,13 +27,18 @@ third = ["Злые языки могут говорить вам обратно�
          "Не нужно бояться одиноких встреч — сегодня то самое время, когда они значат многое.",
          "Если встретите незнакомца на пути — проявите участие, и тогда эта встреча посулит вам приятные хлопоты."]
 
-@bot.message_handler(content_types=['text'])
-def get_text_messages(message):
+from telebot import types
+@bot.message_handler(commands=['start'])
+def start(message):
+    keyboard = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
+    keyboard.add(types.KeyboardButton("Хочу узнать гороскоп"), types.KeyboardButton("Прощай"))
+    bot.send_message(message.chat.id, "Привет! Я бот. Как я могу помочь тебе?", reply_markup=keyboard)
 
-    if message.text == "Привет":
+@bot.message_handler(func=lambda message: True)
+def echo_message(message):
 
-        bot.send_message(message.from_user.id, "Привет, сейчас я расскажу тебе гороскоп на сегодня.")
-
+    if message.text == "Хочу узнать гороскоп":
+        bot.send_message(message.from_user.id, "Cейчас я расскажу тебе гороскоп на сегодня.")
         keyboard = types.InlineKeyboardMarkup()
 
         key_oven = types.InlineKeyboardButton(text='Овен', callback_data='zodiac')
@@ -86,17 +91,14 @@ def get_text_messages(message):
 
         bot.send_message(message.from_user.id, text='Выберите свой знак зодиака', reply_markup=keyboard)
 
-    elif message.text == "/help":
-
-        bot.send_message(message.from_user.id, "Напишите Привет")
+    elif message.text == "Прощай":
+        bot.send_message(message.chat.id, "До свидания! Буду ждать тебя снова.")
 
     else:
+        bot.send_message(message.from_user.id, "Я вас не понимаю. Напишите /help.")
 
-        bot.send_message(message.from_user.id, "Я вас не понимаю. Напиши /help.")
-
-@bot.callback_query_handler(func=lambda call: True)
+@bot.callback_query_handler(func=lambda call:True)
 def callback_worker(call):
-
     if call.data == "zodiac":
         msg = random.choice(first) + ' ' + random.choice(second) + ' ' + random.choice(
             second_add) + ' ' + random.choice(third)
